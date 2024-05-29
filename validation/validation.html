@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>Calculate MPG</title>
+        <script>
+            var $ = function(id){
+                return document.getElementById(id);
+            };
+
+            var enteries= function(){
+                var mile= parseInt($("miles").value);
+                var galon = parseInt($("galons").value);
+
+                if(isNaN(mile) || isNaN(galon)){
+                    alert("The enteries must be numeric!");
+                }else if(mile<0 || galon<0 ){
+                    alert("You need to enter positive values!");
+                }else{
+                    $("mpg").value = calculateMPG(mile,galon);
+                }
+            }
+
+            var calculateMPG = function(mile,galon){
+                var mpg = parseInt((mile/galon));
+                //mpg = mpg.toFixed(1);
+                return mpg
+            }
+
+            window.onload = function(){
+                $("calculate").onclick = enteries;
+            }
+        </script>
+    </head>
+    <body>
+        <h3>Use the application below to enter your numbers</h3>
+        <lable>Miles</lable>
+        <input type="text" id="miles">
+        <br>
+        <lable>Galon</lable>
+        <input type="text" id="galons">
+        <br>
+        <lable>Mile per galon</lable>
+        <input type="text" id="mpg">
+        <br>
+        <input type="button" id="calculate" value="Calculate!" ><br>
+    </body>
+</html>
