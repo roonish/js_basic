@@ -6,41 +6,50 @@
                 return document.getElementById(id);
             };
 
-            var enteries= function(){
-                var mile= parseInt($("miles").value);
+            var enteries = function(){
+                var mile = parseInt($("miles").value);
                 var galon = parseInt($("galons").value);
 
                 if(isNaN(mile) || isNaN(galon)){
-                    alert("The enteries must be numeric!");
-                }else if(mile<0 || galon<0 ){
+                    alert("The entries must be numeric!");
+                }else if(mile < 0 || galon < 0){
                     alert("You need to enter positive values!");
                 }else{
-                    $("mpg").value = calculateMPG(mile,galon);
+                    $("mpg").value = calculateMPG(mile, galon);
                 }
             }
 
-            var calculateMPG = function(mile,galon){
-                var mpg = parseInt((mile/galon));
-                //mpg = mpg.toFixed(1);
-                return mpg
+            var calculateMPG = function(mile, galon){
+                var mpg = mile / galon;
+                mpg = mpg.toFixed(1); // to get one decimal place
+                return mpg;
+            }
+
+            var clearEntries = function(){
+                $("miles").value = '';
+                $("galons").value = '';
+                $("mpg").value = '';
             }
 
             window.onload = function(){
                 $("calculate").onclick = enteries;
+                $("reset").onclick = clearEntries;
             }
         </script>
     </head>
     <body>
         <h3>Use the application below to enter your numbers</h3>
-        <lable>Miles</lable>
+        <label>Miles</label>
         <input type="text" id="miles">
         <br>
-        <lable>Galon</lable>
+        <label>Gallon</label>
         <input type="text" id="galons">
         <br>
-        <lable>Mile per galon</lable>
-        <input type="text" id="mpg">
+        <label>Mile per gallon</label>
+        <input type="text" id="mpg" readonly>
         <br>
         <input type="button" id="calculate" value="Calculate!" ><br>
+        <br>
+        <input type="button" id="reset" value="Clear Entries!" ><br>
     </body>
 </html>
