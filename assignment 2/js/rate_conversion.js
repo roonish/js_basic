@@ -1,5 +1,5 @@
-// Programmer: Samir Ranabhat
-// Date: June 07, 2024
+// Ronish Shivakoti
+// Date: June 09, 2024
 
 // Function to get id from html file
 var $ = function(id) {
@@ -41,14 +41,16 @@ function convertCurrency() {
     // Perform conversion based on valid input
     if (!isNaN(usdAmount)) {
         $('cad-amount').value = convertUSDtoCAD(usdAmount);
-        clearError();
+        $('usd-amount').value = '';  // Clear the USD input field
+        showError(''); // Clear any previous error message
     } else if (!isNaN(cadAmount)) {
         $('usd-amount').value = convertCADtoUSD(cadAmount);
-        clearError();
+        $('cad-amount').value = '';  // Clear the CAD input field
+        showError(''); // Clear any previous error message
     }
 }
 
-// Function to show error message
+// Function to show or clear error message
 function showError(message) {
     let errorElement = $('error-message');
     if (!errorElement) {
@@ -59,14 +61,6 @@ function showError(message) {
         $('convert-button').insertAdjacentElement('afterend', errorElement);
     }
     errorElement.textContent = message;
-}
-
-// Function to clear error message
-function clearError() {
-    const errorElement = $('error-message');
-    if (errorElement) {
-        errorElement.textContent = '';
-    }
 }
 
 // Attach the event handler to the convert button once the DOM is fully loaded

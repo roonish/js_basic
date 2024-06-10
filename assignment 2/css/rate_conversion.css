@@ -1,5 +1,6 @@
 /* Ronish Shivakoti
 Date: June 09, 2024 */
+
 body {
     font-family: Arial, sans-serif;
     display: flex;
@@ -9,6 +10,7 @@ body {
     margin: 0;
     background-color: #ffffff;
 }
+
 header {
     text-align: center;
     margin-bottom: 20px;
@@ -18,7 +20,7 @@ header {
     padding-left: 3%;
 }
 
-h1{
+h1 {
     margin-left: 1%;
 }
 
@@ -59,11 +61,13 @@ h1{
     border-radius: 0 5px 5px 0;
     color: white;
 }
+
 .flag-container img {
     width: 20px;
     height: 20px;
     margin-right: 5px;
 }
+
 .arrows {
     display: flex;
     flex-direction: column;
@@ -72,10 +76,11 @@ h1{
     margin: 15px 20px 0 20px;
     color: skyblue;
 }
+
 button {
     margin-top: 20px;
     padding: 10px 20px;
-    background-color:rgb(55, 80, 126);
+    background-color: rgb(55, 80, 126);
     color: white;
     border: none;
     border-radius: 20px;
@@ -84,6 +89,13 @@ button {
     float: right;
     margin-right: 10%;
 }
+
 button:active {
     transform: scale(0.98);
+}
+
+#error-message {
+    color: red;
+    margin-top: 10px;
+    text-align: center;
 }
