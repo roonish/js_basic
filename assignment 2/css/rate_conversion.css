@@ -1,0 +1,101 @@
+/* Ronish Shivakoti
+Date: June 09, 2024 */
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    background-color: #ffffff;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+    background-color: rgb(55, 80, 126);
+    color: white;
+    width: 100%;
+    padding-left: 3%;
+}
+
+h1 {
+    margin-left: 1%;
+}
+
+.converter-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 60%;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 25%;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.input-with-flag {
+    display: flex;
+    align-items: center;
+}
+
+.input-with-flag input {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    width: 150px;
+}
+
+.flag-container {
+    display: flex;
+    align-items: center;
+    background-color: rgb(55, 80, 126);
+    padding: 14px;
+    border-radius: 0 5px 5px 0;
+    color: white;
+}
+
+.flag-container img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.arrows {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 20px;
+    margin: 15px 20px 0 20px;
+    color: skyblue;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: rgb(55, 80, 126);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    outline: none;
+    float: right;
+    margin-right: 10%;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+#error-message {
+    color: red;
+    margin-top: 10px;
+    text-align: center;
+}

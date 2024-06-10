@@ -1,0 +1,49 @@
+<!-- Ronish Shivakoti
+Date: June 09, 2024 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Currency Converter</title>
+    <link rel="stylesheet" href="css/rate_conversion.css" />
+    <script type="text/javascript" src="js/rate_conversion.js"></script>
+</head>
+<body>
+    <header>
+        <h1>US Dollar to Canadian Dollar.</h1>
+        <p>Convert USD to CAD at the real exchange rate</p>
+    </header>
+    <main>
+        <div class="converter-container">
+            <div class="input-group">
+                <label for="usd-amount">Amount</label>
+                <div class="input-with-flag">
+                    <input type="number" id="usd-amount" placeholder="Amount in USD" min="0">
+                    <div class="flag-container">
+                        <img src="img/us-flag.png" alt="US Flag">
+                        <span>USD</span>
+                    </div>  
+                </div>
+            </div>
+            <div class="arrows">
+                <span>&rarr;</span>
+                <span>&larr;</span>
+            </div>
+            <div class="input-group">
+                <label for="cad-amount">Converted To</label>
+                <div class="input-with-flag">
+                    <input type="number" id="cad-amount" placeholder="Amount in CAD" min="0">
+                    <div class="flag-container">
+                        <img src="img/cad-flag.png" alt="Canada Flag">
+                        <span>CAD</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button id="convert-button">Convert</button>
+        <div id="error-message"></div>
+    </main>
+</body>
+</html>
