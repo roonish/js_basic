@@ -1,0 +1,64 @@
+<!-- Date: June 12, 2024 -->
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driver Eligibility Check</title>
+    <!-- Link to external CSS file for styling -->
+    <link rel="stylesheet" href="style.css">
+    <script>
+        // Function to check driver's eligibility
+        function checkDriverEligibility() {
+            // Get input values from the form
+            const name = document.getElementById("name").value; // Get the driver's name
+            const age = parseInt(document.getElementById("age").value); // Get the driver's age and convert to integer
+            const failedTickets = document.getElementById("failedTickets").checked; // Check if the driver has failed tickets
+            const drunkDriving = document.getElementById("drunkDriving").checked; // Check if the driver has drunk driving records
+            const drugsInfluence = document.getElementById("drugsInfluence").checked; // Check if the driver has driving under the influence of drugs records
+
+            // Variable to store the eligibility message
+            let eligibilityMessage = "";
+
+            // Check if the driver's age is between 18 and 65
+            if (age >= 18 && age <= 65) {
+                // Check if the driver has any criminal records
+                if (failedTickets || drunkDriving || drugsInfluence) {
+                    eligibilityMessage = name + " is banned from driving due to criminal records."; // If any criminal record is found
+                } else {
+                    eligibilityMessage = name + " is eligible to drive."; // If no criminal records are found
+                }
+            } else {
+                eligibilityMessage = name + " is not eligible to drive due to age restrictions."; // If age is not within the valid range
+            }
+
+            // Display the eligibility message
+            document.getElementById("eligibilityMessage").innerText = eligibilityMessage;
+        }
+    </script>
+</head>
+<body>
+    <!-- Container to hold the form and results -->
+    <div class="container">
+        <h1>Driver Eligibility Check</h1>
+        <!-- Form to take user inputs -->
+        <form onsubmit="event.preventDefault(); checkDriverEligibility();">
+            <!-- Input for driver's name -->
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
+            <!-- Input for driver's age -->
+            <label for="age">Age:</label>
+            <input type="number" id="age" required>
+            <!-- Checkboxes for criminal records -->
+            <label><input type="checkbox" id="failedTickets"> Failed Tickets</label>
+            <label><input type="checkbox" id="drunkDriving"> Drunk Driving</label>
+            <label><input type="checkbox" id="drugsInfluence"> Driving Under Influence of Drugs</label>
+            <!-- Button to submit the form -->
+            <button type="submit">Check Eligibility</button>
+        </form>
+        <!-- Paragraph to display the eligibility message -->
+        <p id="eligibilityMessage"></p>
+    </div>
+</body>
+</html>

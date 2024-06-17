@@ -1,0 +1,68 @@
+/* Date: June 12, 2024 */
+
+body {
+    font-family: Arial, sans-serif; /* Sets the font family for the entire document */
+    margin: 0; /* Removes default margin */
+    padding: 0; /* Removes default padding */
+    display: flex; /* Uses flexbox for layout */
+    justify-content: center; /* Centers content horizontally */
+    align-items: center; /* Centers content vertically */
+    height: 100vh; /* Sets the height to 100% of the viewport height */
+    background-color: #f0f0f0; /* Sets a light gray background color */
+}
+
+/* Style for the container that holds the form and message */
+.container {
+    background-color: white; /* Sets the background color to white */
+    padding: 20px; /* Adds padding inside the container */
+    border-radius: 8px; /* Rounds the corners of the container */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow around the container */
+    width: 300px; /* Sets a fixed width for the container */
+}
+
+/* Style for the main heading */
+h1 {
+    text-align: center; /* Centers the heading text */
+}
+
+/* Style for the labels of form inputs */
+label {
+    display: block; /* Makes the label a block element */
+    margin: 10px 0 5px; /* Adds margin above and below the label */
+}
+
+/* Style for text and number input fields */
+input[type="text"], input[type="number"] {
+    width: 100%; /* Sets the width to 100% of the parent element */
+    padding: 8px; /* Adds padding inside the input fields */
+    box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+}
+
+/* Style for checkbox inputs */
+input[type="checkbox"] {
+    margin-right: 10px; /* Adds space to the right of the checkbox */
+}
+
+/* Style for the submit button */
+button {
+    width: 100%; /* Sets the width to 100% of the parent element */
+    padding: 10px; /* Adds padding inside the button */
+    background-color: #007bff; /* Sets the background color to blue */
+    color: white; /* Sets the text color to white */
+    border: none; /* Removes the default border */
+    border-radius: 5px; /* Rounds the corners of the button */
+    cursor: pointer; /* Changes the cursor to a pointer on hover */
+    margin-top: 10px; /* Adds space above the button */
+}
+
+/* Style for the submit button on hover */
+button:hover {
+    background-color: #0056b3; /* Changes the background color to a darker blue on hover */
+}
+
+/* Style for the paragraph displaying the eligibility message */
+p {
+    margin-top: 15px; /* Adds space above the paragraph */
+    text-align: center; /* Centers the paragraph text */
+    font-weight: bold; /* Makes the text bold */
+}
