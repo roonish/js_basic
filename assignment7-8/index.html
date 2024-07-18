@@ -1,0 +1,130 @@
+<!-- Developer: Ronish Shivakoti (C0929420) -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title of the webpage -->
+    <title>Student Registration Form</title>
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- Link to the external JavaScript file -->
+    <script type="text/javascript" src="script.js"></script>
+</head>
+
+<body>
+    <div class="form-container">
+        <h2>Student Registration Form</h2>
+        <form id="registrationForm">
+            <!-- First Name Field -->
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <div class="input-wrapper">
+                    <input type="text" id="firstName" name="firstName">
+                    <p class="error-message" id="firstNameError"></p>
+                </div>
+            </div>
+            <!-- Last Name Field -->
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <div class="input-wrapper">
+                    <input type="text" id="lastName" name="lastName">
+                    <p class="error-message" id="lastNameError"></p>
+                </div>
+            </div>
+            <!-- DOB Field -->
+            <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <div class="input-wrapper">
+                    <input type="date" id="dob" name="dob">
+                    <p class="error-message" id="dobError"></p>
+                </div>
+            </div>
+            <!-- Gender Field -->
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <div class="input-wrapper">
+                    <div class="radio-wrapper">
+                        <input type="radio" id="male" name="gender" value="male"> Male
+                        <input type="radio" id="female" name="gender" value="female"> Female
+                    </div>
+                    <p class="error-message" id="genderError"></p>
+                </div>
+            </div>
+            <!-- Email Field -->
+            <div class="form-group">
+                <label for="mail">Email</label>
+                <div class="input-wrapper">
+                    <input type="email" id="mail" name="mail">
+                    <p class="error-message" id="mailError"></p>
+                </div>
+            </div>
+            <!-- Mobile Number Field -->
+            <div class="form-group">
+                <label for="mobile">Mobile Number</label>
+                <div class="input-wrapper">
+                    <input type="tel" id="mobile" name="mobile">
+                    <p class="error-message" id="mobileError"></p>
+                </div>
+            </div>
+            <!-- Password Field -->
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="input-wrapper">
+                    <input type="password" id="password" name="password">
+                    <p class="error-message" id="passwordError"></p>
+                </div>
+            </div>
+            <!-- Confirm Password Field -->
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <div class="input-wrapper">
+                    <input type="password" id="confirmPassword" name="confirmPassword">
+                    <p class="error-message" id="confirmPasswordError"></p>
+                </div>
+            </div>
+            <!-- Courses Field -->
+            <div class="form-group">
+                <label for="courses">Courses</label>
+                <div class="input-wrapper">
+                    <select id="courses" name="courses">
+                        <option value="ME/MTech">ME/MTech</option>
+                        <option value="PG">PG</option>
+                    </select>
+                    <p class="error-message" id="coursesError"></p>
+                </div>
+            </div>
+            <!-- Branch Field -->
+            <div class="form-group">
+                <label for="branch">Branch</label>
+                <div class="input-wrapper">
+                    <select id="branch" name="branch">
+                        <option value="Computer Science and Engineering">Computer Science and Engineering</option>
+                        <option value="Full Stack Software Development">Full Stack Software Development</option>
+                        <option value="Artificial Intelligence">Artificial Intelligence</option>
+                    </select>
+                    <p class="error-message" id="branchError"></p>
+                </div>
+            </div>
+            <!-- Semester Field -->
+            <div class="form-group">
+                <label for="semester">Semester</label>
+                <div class="input-wrapper">
+                    <select id="semester" name="semester">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                    <p class="error-message" id="semesterError"></p>
+                </div>
+            </div>
+            <!-- Register Button -->
+            <button type="button" onclick="validateForm()">Register</button>
+        </form>
+    </div>
+</body>
+
+</html>
