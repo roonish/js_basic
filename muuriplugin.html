@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muuri Grid</title>
+    <link rel="stylesheet" href="https://unpkg.com/muuri@0.9.3/dist/muuri.min.css">
+    <style>
+        .grid {
+            position: relative;
+        }
+        .grid-item {
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+            background-color: #ccc;
+            border: 1px solid #333;
+            cursor: move;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid">
+        <div class="grid-item">1</div>
+        <div class="grid-item">2</div>
+        <div class="grid-item">3</div>
+        <div class="grid-item">4</div>
+    </div>
+
+    <script src="https://unpkg.com/muuri@0.9.3/dist/muuri.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const grid = new Muuri('.grid', {
+                dragEnabled: true
+            });
+        });
+    </script>
+</body>
+</html>
