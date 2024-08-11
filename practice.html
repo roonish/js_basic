@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+</head>
+<body style="text-align: center; padding-top: 50px;">
+
+    <h2>Login Form</h2>
+    <form id="loginForm">
+        <label for="email">Email:</label><br>
+        <input type="text" id="email" name="email"><br><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password"><br><br>
+        <button type="submit">Login</button>
+    </form>
+
+    <p id="errorMessage" style="color: red;"></p>
+
+    <script>
+        const form = document.getElementById('loginForm');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const errorMessage = document.getElementById('errorMessage');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            errorMessage.textContent = ''; // Clear previous error message
+
+            const email = emailInput.value.trim();
+            const password = passwordInput.value.trim();
+
+            if (!validateEmail(email)) {
+                errorMessage.textContent = 'Please enter a valid email address.';
+                return;
+            }
+
+            if (password === '') {
+                errorMessage.textContent = 'Please enter a password.';
+                return;
+            }
+
+            alert('Login successful!');
+        });
+
+        function validateEmail(email) {
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailPattern.test(email);
+        }
+    </script>
+
+</body>
+</html>
