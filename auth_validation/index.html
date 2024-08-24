@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Image Slider</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="login-container">
+        <form id="loginForm" class="login-form">
+            <h2>Login</h2>
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <span id="usernameError" class="error"></span>
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <span id="passwordError" class="error"></span>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <div class="slider-container">
+        <div class="slider">
+            <img src="auth_validation\images\cad-flag.png" alt="Image 1" class="slide active">
+            <img src="auth_validation\images\us-flag.png" alt="Image 2" class="slide">
+            <img src="auth_validation\images\car.png" alt="Image 3" class="slide">
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
