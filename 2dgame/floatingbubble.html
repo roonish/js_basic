@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floating Bubbles</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #001f3f;
+        }
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Include the p5.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+
+    <script>
+        let bubbles = [];
+
+        function setup() {
+            createCanvas(window.innerWidth, window.innerHeight);
+            for (let i = 0; i < 50; i++) {
+                bubbles.push(new Bubble(random(width), random(height), random(20, 80)));
+            }
+        }
+
+        function draw() {
+            background(0, 31, 63); // Dark blue background
+            for (let bubble of bubbles) {
+                bubble.move();
+                bubble.display();
+                bubble.checkEdges();
+            }
+        }
+
+        class Bubble {
+            constructor(x, y, r) {
+                this.x = x;
+                this.y = y;
+                this.r = r;
+                this.xSpeed = random(-2, 2);
+                this.ySpeed = random(-1, 1);
+                this.color = [random(100, 255), random(100, 255), random(255)];
+                this.alpha = random(100, 200);
+            }
+
+            move() {
+                this.x += this.xSpeed;
+                this.y += this.ySpeed;
+
+                // Gently oscillate the size of the bubbles
+                this.r += sin(frameCount * 0.02);
+            }
+
+            display() {
+                fill(this.color[0], this.color[1], this.color[2], this.alpha);
+                noStroke();
+                ellipse(this.x, this.y, this.r * 2);
+            }
+
+            checkEdges() {
+                if (this.x > width + this.r) this.x = -this.r;
+                if (this.x < -this.r) this.x = width + this.r;
+                if (this.y > height + this.r) this.y = -this.r;
+                if (this.y < -this.r) this.y = height + this.r;
+            }
+        }
+
+        function windowResized() {
+            resizeCanvas(window.innerWidth, window.innerHeight);
+        }
+    </script>
+</body>
+</html>
