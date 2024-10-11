@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Functions Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        input {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            max-width: 300px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>JavaScript Functions Example</h1>
+
+    <div>
+        <h2>Add Two Numbers</h2>
+        <input type="number" id="num1" placeholder="Enter first number" />
+        <input type="number" id="num2" placeholder="Enter second number" />
+        <button onclick="performAddition()">Add</button>
+        <div class="result" id="addResult"></div>
+    </div>
+
+    <div>
+        <h2>Check Even or Odd</h2>
+        <input type="number" id="checkNum" placeholder="Enter a number" />
+        <button onclick="checkEvenOrOdd()">Check</button>
+        <div class="result" id="evenOddResult"></div>
+    </div>
+
+    <div>
+        <h2>Reverse a String</h2>
+        <input type="text" id="stringInput" placeholder="Enter a string" />
+        <button onclick="reverseInputString()">Reverse</button>
+        <div class="result" id="reverseResult"></div>
+    </div>
+
+    <script>
+        function addNumbers(num1, num2) {
+            return num1 + num2;
+        }
+
+        function isEvenOrOdd(num) {
+            return num % 2 === 0 ? "Even" : "Odd";
+        }
+
+        function reverseString(str) {
+            return str.split('').reverse().join('');
+        }
+
+        function performAddition() {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            const sum = addNumbers(num1, num2);
+            document.getElementById('addResult').innerText = `Sum: ${sum}`;
+        }
+
+        function checkEvenOrOdd() {
+            const num = parseInt(document.getElementById('checkNum').value);
+            const parity = isEvenOrOdd(num);
+            document.getElementById('evenOddResult').innerText = `${num} is: ${parity}`;
+        }
+
+        function reverseInputString() {
+            const str = document.getElementById('stringInput').value;
+            const reversed = reverseString(str);
+            document.getElementById('reverseResult').innerText = `Reversed string: ${reversed}`;
+        }
+    </script>
+</body>
+</html>
