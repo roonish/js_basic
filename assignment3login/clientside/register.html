@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="./styles.css"> <!-- Link to CSS -->
+</head>
+<body>
+    <h2>Register</h2>
+
+    <!-- Registration Form -->
+    <form id="registerForm">
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button type="submit">Register</button>
+    </form>
+
+    <!-- Message Display -->
+    <p id="message"></p>
+
+    <!-- Navigation to Login -->
+    <p>Already have an account? <a href="login.html">Go to Login</a></p>
+
+    <script>
+        // Register Form Submission
+        document.getElementById('registerForm').addEventListener('submit', async function(event) {
+    event.preventDefault(); // Prevent form reload
+
+    // Get input values
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    const messageElement = document.getElementById('message');
+
+    // Send a POST request to /api/register
+    const response = await fetch('/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+    });
+
+    // Get response message
+    const message = await response.text();
+    messageElement.innerText = message;
+
+    if (response.ok) {
+        messageElement.className = "success"; // Green message for success
+        document.getElementById('registerForm').reset(); // Clear form
+    } else {
+        messageElement.className = "error"; // Red message for error
+    }
+});
+    </script>
+</body>
+</html>
