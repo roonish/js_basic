@@ -1,0 +1,42 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <h2>List of all order</h2>
+        <!-- Adding table to show list of order -->
+        <table>
+            <th>Order Id</th>
+            <th>Customer Name</th>
+            <th>Total Price</th>
+
+            <!-- assign all the value from database to table -->
+            <% for(var i = 0; i<orderlist.length;i++){ %>
+                <tr>
+                    <td><%= orderlist[i].orderId %></td>
+                    <td><%= orderlist[i].customerName %></td>
+                    <td><%= orderlist[i].totalPrice %></td>
+                </tr>
+                
+                <% } %>
+          
+        </table>
+
+        <br/>
+        <!-- To show form that search order by date -->
+        <form method="get" action="/orders/searchbydate">
+            <input type="number" name="date" placeholder="Enter date" />
+            <input type="search" value="Submit"/>
+            </form>
+            <br/>
+
+            <!-- To show form that search order by id -->
+        <form method="get" action="/orders/searchbyid">
+            <input type="number" name="id" placeholder="Enter id to search order" />
+            <input type="search" value="Submit"/>
+            </form>
+            <br/>
+    </body>
+    </html>
+
+
+    
