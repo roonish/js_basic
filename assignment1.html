@@ -1,0 +1,182 @@
+<!-- Ronish Shivakoti -->
+<!-- C0929420 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Assignment</title>
+    <style>
+        /* Styling for the coordinates display box */
+        #coordinates {
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid black;
+            width: fit-content;
+        }
+
+        /* Styling for the hover buttons */
+        .hover-button {
+            margin: 5px;
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        // 1. Function to remove all text fields from the webpage
+        // This function selects all input elements of type "text" and removes them from the DOM
+        function removeTextFields() {
+            const textFields = document.querySelectorAll('input[type="text"]');
+            textFields.forEach(field => field.remove());
+        }
+
+        // 2. Function to create and append a paragraph to the page
+        // Creates a paragraph element, adds text and styles, then appends it to the body
+        function addParagraph() {
+            const paragraph = document.createElement('p');
+            paragraph.textContent = "New Paragraph Added"; // Add text content
+            paragraph.style.color = "green"; // Set font color to green
+            paragraph.style.fontSize = "12px"; // Set font size to 12px
+            document.body.appendChild(paragraph); // Append paragraph to the body
+        }
+
+        // 3. Function to remove an element by ID
+        // Takes an ID as a parameter, checks if the element exists, and removes it if found
+        function removeElementById(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.remove(); // Remove the element if it exists
+            } else {
+                console.error(`Element with ID '${id}' does not exist.`); // Log error if element not found
+            }
+        }
+
+        // 4. Add a click event to the "Click Me" button
+        // Once the button is clicked, a new paragraph is added to the page
+        // document.addEventListener('DOMContentLoaded', () => {
+        //     const clickMeButton = document.getElementById('clickMe');
+        //     if (clickMeButton) {
+        //         clickMeButton.addEventListener('click', addParagraph);
+        //     }
+        // });
+
+        // // 5. Create "Hover Your Mouse Here" button with hover and click functionality
+        // // Adds hover effects and duplicates the button on click
+        // function createHoverButton() {
+        //     const button = document.createElement('button');
+        //     button.textContent = "Hover Your Mouse Here"; // Set button text
+        //     button.classList.add('hover-button'); // Add CSS class for styling
+            
+        //     // Change background color to red when mouse enters
+        //     button.addEventListener('mouseenter', () => button.style.backgroundColor = 'red');
+        //     // Reset background color when mouse leaves
+        //     button.addEventListener('mouseleave', () => button.style.backgroundColor = '');
+            
+        //     // Duplicate the button when it is clicked
+        //     button.addEventListener('click', createHoverButton);
+
+        //     // Append the button to the body
+        //     document.body.appendChild(button);
+        // }
+
+        // 6. Display mouse pointer coordinates in a <div>
+        // Updates the coordinates dynamically as the mouse moves
+        function trackMouseCoordinates() {
+            const coordinatesDiv = document.getElementById('coordinates');
+            
+            // Listen for mousemove event on the entire document
+            document.addEventListener('mousemove', (event) => {
+                // Update the coordinates div with mouse position
+                coordinatesDiv.textContent = `X: ${event.clientX}, Y: ${event.clientY}`;
+            });
+        }
+
+        // Ensure the function is called after the DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            trackMouseCoordinates(); // Initialize the mouse tracking functionality
+        });
+
+        // 7. Create a table based on user input for rows and columns
+        // Validates inputs and generates a table with random numbers between 1 and 100
+        function createTable() {
+            // Get the number of rows and columns from user inputs
+            const rows = parseInt(document.getElementById('rows').value, 10);
+            const cols = parseInt(document.getElementById('cols').value, 10);
+
+            // Validate the inputs to ensure they are positive integers
+            if (isNaN(rows) || rows <= 0 || isNaN(cols) || cols <= 0) {
+                alert('Please enter valid positive integers for rows and columns.');
+                return;
+            }
+
+            // Create a table element
+            const table = document.createElement('table');
+            table.border = "1"; // Set table border
+            table.style.marginTop = "10px"; // Add margin above the table
+
+            // Create table header
+            const thead = document.createElement('thead');
+            const headerRow = document.createElement('tr');
+            for (let c = 0; c < cols; c++) {
+                const th = document.createElement('th');
+                th.textContent = `Header ${c + 1}`; // Add header text
+                headerRow.appendChild(th); // Append header cell to the row
+            }
+            thead.appendChild(headerRow); // Append the header row to the table head
+            table.appendChild(thead); // Append the table head to the table
+
+            // Create table body with random numbers
+            const tbody = document.createElement('tbody');
+            for (let r = 0; r < rows; r++) {
+                const row = document.createElement('tr');
+                for (let c = 0; c < cols; c++) {
+                    const cell = document.createElement('td');
+                    cell.textContent = Math.floor(Math.random() * 100) + 1; // Generate random number
+                    row.appendChild(cell); // Append cell to the row
+                }
+                tbody.appendChild(row); // Append row to the table body
+            }
+            table.appendChild(tbody); // Append the table body to the table
+
+            // Append the table to the body
+            document.body.appendChild(table);
+        }
+
+        // Initialize functionalities after DOM is loaded
+        // Ensures all tasks are ready for interaction
+        document.addEventListener('DOMContentLoaded', () => {
+            createHoverButton(); // Task 5: Initialize hover button
+            trackMouseCoordinates(); // Task 6: Start tracking mouse coordinates
+        });
+    </script>
+</head>
+<body>
+    <h1>JavaScript Assignment</h1>
+
+    <!-- Task 1: Remove all text fields -->
+    <!-- <button onclick="removeTextFields()">Remove All Text Fields</button> -->
+    <!-- <input type="text" placeholder="Text Field 1"> -->
+    <!-- <input type="text" placeholder="Text Field 2"> -->
+
+    <!-- Task 2: Add a paragraph -->
+    <!-- <button onclick="addParagraph()">Add Paragraph</button> -->
+
+    <!-- Task 3: Remove element by ID -->
+    <!-- <button onclick="removeElementById('toRemove')">Remove Element by ID</button> -->
+    <!-- <div id="toRemove">This element can be removed by ID.</div> -->
+
+    <!-- Task 4: Add click event to the "Click Me" button -->
+    <!-- <button id="clickMe">Click Me</button> -->
+
+    <!-- Task 6: Display mouse pointer coordinates -->
+    <!-- <div id="coordinates">X: 0, Y: 0</div> -->
+
+    <!-- Task 7: Create a table -->
+    <div>
+        <label>Rows: <input type="number" id="rows"></label>
+        <label>Columns: <input type="number" id="cols"></label>
+        <button onclick="createTable()">Create Table</button>
+    </div>
+</body>
+</html>
