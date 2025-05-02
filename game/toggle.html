@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Effects and Animations</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- css -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .content {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .content h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .list-item {
+            cursor: pointer;
+            padding: 5px;
+            border-bottom: 1px solid #ddd;
+        }
+        .list-item:hover {
+            background-color: #f1f1f1;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 1rem;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        input {
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: calc(100% - 22px);
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to jQuery Effects and Animations</h1>
+
+    <div class="content">
+        <h2>Toggle Paragraph</h2>
+        <p id="para">Click the button below to see toggle effects </p>
+        <button id="togglePara">Toggle Paragraph</button>
+    </div>
+
+    <div class="content">
+        <h2>Image Effects</h2>
+        <img src="https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_640.jpg" alt="Sample Image" class="image" id="image">
+        <br>
+        <button id="hideImage">Hide/Show Image</button>
+    </div>
+
+    <div class="content">
+        <h2>Slide List</h2>
+        <ul>
+            <li class="list-item">Apple</li>
+            <li class="list-item">Ball</li>
+            <li class="list-item">Cat</li>
+        </ul>
+        <button id="toggleList">Toggle List</button>
+    </div>
+
+    <div class="content">
+        <h2>Interactive Input</h2>
+        <label for="inputField">Enter your name: </label>
+        <input type="text" id="inputField">
+        <button id="shakeInput">Shake Input</button>
+    </div>
+
+    <div class="content">
+        <h2>Color Change</h2>
+        <p id="colorText">Click the button to change my color!</p>
+        <button id="changeColor">Change Color</button>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // Toggle paragraph visibility
+            $('#togglePara').click(function() {
+                $('#para').toggle('slow');
+            });
+
+            // Hide and show image
+            $('#hideImage').click(function() {
+                $('#image').toggle('slow');
+            });
+
+            // Slide list up and down
+            $('#toggleList').click(function() {
+                $('ul').slideToggle('slow');
+            });
+
+            // Shake input field
+            $('#shakeInput').click(function() {
+                for (let i = 0; i < 3; i++) {
+                    $('#inputField').animate({
+                        marginLeft: '-10px'
+                    }, 100).animate({
+                        marginLeft: '10px'
+                    }, 100).animate({
+                        marginLeft: '0px'
+                    }, 100);
+                }
+            });
+
+            // Animate list item on click
+            $('.list-item').click(function() {
+                $(this).animate({
+                    fontSize: '20px',
+                    marginLeft: '20px'
+                }, 500).animate({
+                    fontSize: '16px',
+                    marginLeft: '0px'
+                }, 500);
+            });
+
+           // Change color effect
+            $('#changeColor').click(function() {
+                $('#colorText').css('color', '#007bff');
+                setTimeout(function() {
+                    $('#colorText').css('color', '#333');
+                }, 500);
+            });
+
+        });
+    </script>
+</body>
+</html>

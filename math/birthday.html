@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f7d9d9;
+            overflow: hidden;
+            color: #fff;
+        }
+
+        #birthday-card {
+            text-align: center;
+            background-color: #ff85a1;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin: 0 0 20px;
+        }
+
+        p {
+            font-size: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #fff;
+            color: #ff85a1;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #ffe0e6;
+        }
+
+        /* Confetti style */
+        .confetti {
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            position: absolute;
+            top: -10px;
+            animation: fall 5s linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="birthday-card">
+        <h1>Happy Birthday!</h1>
+        <p>Wishing you a day filled with happiness and a year filled with joy.</p>
+        <button onclick="startConfetti()">Start the Celebration</button>
+    </div>
+
+    <script>
+        // Function to create confetti
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti');
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            document.body.appendChild(confetti);
+
+            setTimeout(() => {
+                confetti.remove();
+            }, 5000); // Remove confetti after 5 seconds
+        }
+
+        // Function to start confetti rain
+        function startConfetti() {
+            setInterval(createConfetti, 100);
+        }
+    </script>
+
+</body>
+</html>
