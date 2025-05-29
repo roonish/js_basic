@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generative Art with p5.js</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+        }
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script>
+        let cols, rows;
+        let scale = 30;
+        let noiseFactor = 0.1;
+        let time = 0;
+
+        function setup() {
+            createCanvas(window.innerWidth, window.innerHeight);
+            cols = floor(width / scale);
+            rows = floor(height / scale);
+            noStroke();
+        }
+
+        function draw() {
+            background(0);
+            time += 0.01;
+
+            for (let y = 0; y < rows; y++) {
+                for (let x = 0; x < cols; x++) {
+                    let xOffset = x * noiseFactor;
+                    let yOffset = y * noiseFactor;
+
+                    let noiseValue = noise(xOffset, yOffset, time);
+
+                    let circleSize = map(noiseValue, 0, 1, 5, scale * 1.5);
+                    let hueValue = map(noiseValue, 0, 1, 0, 360);
+
+                    fill(hueValue, 100, 100);
+                    ellipse(x * scale + scale / 2, y * scale + scale / 2, circleSize);
+                }
+            }
+        }
+
+        function windowResized() {
+            resizeCanvas(window.innerWidth, window.innerHeight);
+            cols = floor(width / scale);
+            rows = floor(height / scale);
+        }
+    </script>
+</body>
+</html>

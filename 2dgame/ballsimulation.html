@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bouncing Balls Simulation</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+        }
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Include the p5.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+
+    <script>
+        let balls = [];
+
+        function setup() {
+            createCanvas(window.innerWidth, window.innerHeight);
+            // Create an array of bouncing balls
+            for (let i = 0; i < 10; i++) {
+                balls.push(new Ball(random(width), random(height), random(20, 50)));
+            }
+        }
+
+        function draw() {
+            background(0);
+            for (let ball of balls) {
+                ball.move();
+                ball.bounce();
+                ball.display();
+            }
+        }
+
+        class Ball {
+            constructor(x, y, r) {
+                this.x = x;
+                this.y = y;
+                this.r = r;
+                this.xSpeed = random(-5, 5);
+                this.ySpeed = random(-5, 5);
+                this.color = [random(255), random(255), random(255)];
+            }
+
+            move() {
+                this.x += this.xSpeed;
+                this.y += this.ySpeed;
+            }
+
+            bounce() {
+                if (this.x > width - this.r || this.x < this.r) {
+                    this.xSpeed *= -1;
+                }
+                if (this.y > height - this.r || this.y < this.r) {
+                    this.ySpeed *= -1;
+                }
+            }
+
+            display() {
+                fill(this.color);
+                noStroke();
+                ellipse(this.x, this.y, this.r * 2);
+            }
+        }
+
+        function windowResized() {
+            resizeCanvas(window.innerWidth, window.innerHeight);
+        }
+    </script>
+</body>
+</html>

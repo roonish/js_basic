@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Even or Odd Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        h1 {
+            color: #333;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Random Even or Odd Generator</h1>
+    <button id="generateButton">Generate Random Number</button>
+    <div id="result"></div>
+
+    <script>
+        document.getElementById('generateButton').addEventListener('click', function() {
+            const min = 1;
+            const max = 100;
+            const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+            const type = randomNumber % 2 === 0 ? 'even' : 'odd';
+            document.getElementById('result').innerText = `The random number is ${randomNumber} and it is ${type}.`;
+        });
+    </script>
+</body>
+</html>

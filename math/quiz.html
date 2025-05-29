@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 50px;
+        }
+        #quiz {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+        .hidden {
+            display: none;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div id="quiz" class="hidden">
+    <h2 id="question"></h2>
+    <div id="options"></div>
+    <button id="nextBtn" class="hidden">Next Question</button>
+</div>
+<div id="result" class="hidden"></div>
+<button id="startBtn">Start Quiz</button>
+
+<script>
+    const quizData = [
+        {
+            question: "What is the capital of France?",
+            options: ["Berlin", "Madrid", "Paris", "Rome"],
+            answer: "Paris"
+        },
+        {
+            question: "Who wrote 'To Kill a Mockingbird'?",
+            options: ["Harper Lee", "Mark Twain", "Ernest Hemingway", "F. Scott Fitzgerald"],
+            answer: "Harper Lee"
+        },
+        {
+            question: "What is the largest planet in our solar system?",
+            options: ["Earth", "Mars", "Jupiter", "Saturn"],
+            answer: "Jupiter"
+        },
+        {
+            question: "What is the smallest prime number?",
+            options: ["0", "1", "2", "3"],
+            answer: "2"
+        }
+    ];
+
+    let currentQuestionIndex = 0;
+    let score = 0;
+
+    const questionEl = document.getElementById('question');
+    const optionsEl = document.getElementById('options');
+    const startBtn = document.getElementById('startBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const quizEl = document.getElementById('quiz');
+    const resultEl = document.getElementById('result');
+
+    startBtn.addEventListener('click', startQuiz);
+    nextBtn.addEventListener('click', nextQuestion);
+
+    function startQuiz() {
+        score = 0;
+        currentQuestionIndex = 0;
+        quizEl.classList.remove('hidden');
+        resultEl.classList.add('hidden');
+        startBtn.classList.add('hidden');
+        nextQuestion();
+    }
+
+    function nextQuestion() {
+        if (currentQuestionIndex < quizData.length) {
+            showQuestion(quizData[currentQuestionIndex]);
+        } else {
+            showResult();
+        }
+    }
+
+    function showQuestion(questionData) {
+        questionEl.textContent = questionData.question;
+        optionsEl.innerHTML = '';
+        questionData.options.forEach(option => {
+            const button = document.createElement('button');
+            button.textContent = option;
+            button.onclick = () => selectOption(option, questionData.answer);
+            optionsEl.appendChild(button);
+        });
+        nextBtn.classList.add('hidden');
+    }
+
+    function selectOption(selected, correct) {
+        if (selected === correct) {
+            score++;
+        }
+        nextBtn.classList.remove('hidden');
+    }
+
+    function showResult() {
+        quizEl.classList.add('hidden');
+        resultEl.classList.remove('hidden');
+        resultEl.textContent = `You scored ${score} out of ${quizData.length}!`;
+        startBtn.classList.remove('hidden');
+    }
+</script>
+
+</body>
+</html>

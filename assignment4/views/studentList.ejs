@@ -1,0 +1,15 @@
+// views/students.ejs
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Students List</title>
+</head>
+<body>
+    <h2>Student List</h2>
+    <section>
+        <% allStudents.forEach(student => { %>
+            <p><%= student.firstName %> <%= student.lastName %> - ID: <%= student.studentId %></p>
+        <% }); %>
+    </section>
+</body>
+</html>

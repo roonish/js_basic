@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .calculator {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        .display {
+            width: 100%;
+            height: 50px;
+            text-align: right;
+            font-size: 24px;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+        .button-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        .button {
+            font-size: 20px;
+            padding: 15px;
+            background-color: #f1f1f1;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #ddd;
+        }
+        .button:active {
+            background-color: #bbb;
+        }
+        .button.operator {
+            background-color: #ff9500;
+            color: white;
+        }
+        .button.operator:hover {
+            background-color: #ff7f00;
+        }
+        .button.equal {
+            background-color: #28a745;
+            color: white;
+            grid-column: span 2;
+        }
+        .button.clear {
+            background-color: #dc3545;
+            color: white;
+            grid-column: span 2;
+        }
+        .button-function {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" class="display" id="display" disabled>
+        <div class="button-container">
+            <button class="button clear" onclick="clearDisplay()">C</button>
+            <button class="button operator" onclick="appendToDisplay('/')">/</button>
+            <button class="button operator" onclick="appendToDisplay('*')">*</button>
+            <button class="button operator" onclick="appendToDisplay('-')">-</button>
+            <button class="button" onclick="appendToDisplay('7')">7</button>
+            <button class="button" onclick="appendToDisplay('8')">8</button>
+            <button class="button" onclick="appendToDisplay('9')">9</button>
+            <button class="button operator" onclick="appendToDisplay('+')">+</button>
+            <button class="button" onclick="appendToDisplay('4')">4</button>
+            <button class="button" onclick="appendToDisplay('5')">5</button>
+            <button class="button" onclick="appendToDisplay('6')">6</button>
+            <button class="button-function" onclick="sqrt()">√</button>
+            <button class="button" onclick="appendToDisplay('1')">1</button>
+            <button class="button" onclick="appendToDisplay('2')">2</button>
+            <button class="button" onclick="appendToDisplay('3')">3</button>
+            <button class="button-function" onclick="logarithm()">log</button>
+            <button class="button" onclick="appendToDisplay('0')">0</button>
+            <button class="button-function" onclick="appendToDisplay('.')">.</button>
+            <button class="button equal" onclick="calculate()">=</button>
+            <button class="button-function" onclick="trigonometric('sin')">sin</button>
+            <button class="button-function" onclick="trigonometric('cos')">cos</button>
+            <button class="button-function" onclick="trigonometric('tan')">tan</button>
+        </div>
+    </div>
+
+    <script>
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+        function appendToDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+
+        function calculate() {
+            try {
+                let result = eval(document.getElementById('display').value);
+                document.getElementById('display').value = result;
+            } catch (error) {
+                document.getElementById('display').value = 'Error';
+            }
+        }
+
+        function sqrt() {
+            let value = document.getElementById('display').value;
+            let result = Math.sqrt(parseFloat(value));
+            document.getElementById('display').value = result;
+        }
+
+        function logarithm() {
+            let value = document.getElementById('display').value;
+            let result = Math.log10(parseFloat(value));
+            document.getElementById('display').value = result;
+        }
+
+        function trigonometric(func) {
+            let value = document.getElementById('display').value;
+            let number = parseFloat(value);
+            let result;
+            if (func === 'sin') {
+                result = Math.sin(number);
+            } else if (func === 'cos') {
+                result = Math.cos(number);
+            } else if (func === 'tan') {
+                result = Math.tan(number);
+            }
+            document.getElementById('display').value = result;
+        }
+    </script>
+</body>
+</html>
